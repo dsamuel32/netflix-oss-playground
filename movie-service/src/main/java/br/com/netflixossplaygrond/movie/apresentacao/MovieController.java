@@ -19,6 +19,7 @@ public class MovieController {
         Set<String> movies = new HashSet<>();
         movies.add("Vingadores Guerra Infinita");
         movies.add("Spider-man");
+        movies.add("Home de ferro");
         return new ResponseEntity<>(movies, HttpStatus.OK);
     }
 
