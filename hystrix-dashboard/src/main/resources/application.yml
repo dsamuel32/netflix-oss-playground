@@ -1,0 +1,16 @@
+spring:
+    application:
+        name: dashboard  # Identify this application
+    cloud:
+        config:
+            uri: http://localhost:8888
+
+# Server
+server:
+    port: 8085
+
+# Discovery Server Access
+eureka:
+    client:
+           serviceUrl:
+                  defaultZone: http://localhost:8083/eureka/

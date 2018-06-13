@@ -1,5 +1,5 @@
 https://medium.com/@tharanganilupul/microservices-implementation-netflix-stack-ba4f4a57a79f
 
-https://github.com/quebic-source/microservices-sample-projects
+https://github.com/quebic-source/microservices-sample-project
 
 https://spring.io/guides/gs/service-registration-and-discovery/
