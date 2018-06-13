@@ -1,4 +1,4 @@
-package br.com.netflixossplaygrond.movie.apresentacao;
+package br.com.netflixossplaygrond.filme.apresentacao;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -11,8 +11,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 @RestController
-@RequestMapping(value = "movie", produces = MediaType.APPLICATION_JSON_VALUE)
-public class MovieController {
+@RequestMapping(value = "filme", produces = MediaType.APPLICATION_JSON_VALUE)
+public class FilmeController {
 
     @GetMapping()
     public ResponseEntity<Set<String>> getMovie() {

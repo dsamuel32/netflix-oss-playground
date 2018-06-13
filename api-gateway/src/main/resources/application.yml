@@ -24,10 +24,14 @@ zuul:
 #            serviceId: AUTH-SERVICE
 #            sensitiveHeaders: Cookie,Set-Cookie
 
-    movie-service:
-            path: /movie-sevice/**
-            serviceId: MOVIE-SERVICE
+    filme-service:
+            path: /filme-sevice/**
+            serviceId: FILME-SERVICE
             sensitiveHeaders: Cookie,Set-Cookie
+    cinema-service:
+                path: /cinema-sevice/**
+                serviceId: CINEMA-SERVICE
+                sensitiveHeaders: Cookie,Set-Cookie
 
 
 # Increase the Hystrix timeout to 60s (globally)
