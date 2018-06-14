@@ -16,8 +16,8 @@ public class CinemaService {
     public List<Cinema> getCinemas() {
         Cinema cinema1 = new Cinema(1L, "Cine Mark");
         cinema1.setFilmes(filmeServiceProxy.getFilmes());
-        Cinema cinema2 = new Cinema(2L, "kinoples");
-        cinema1.setFilmes(filmeServiceProxy.getFilmes());
+        Cinema cinema2 = new Cinema(2L, "kinoplex");
+        cinema2.setFilmes(filmeServiceProxy.getFilmes());
 
         return Arrays.asList(cinema1, cinema2);
     }

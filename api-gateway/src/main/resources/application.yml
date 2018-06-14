@@ -18,17 +18,17 @@ instance:
 # Api-Gate-Way
 zuul:
     prefix: /api-gateway
-#    routes:
+    routes:
 #        auth-service:
 #            path: /auth-service/**
 #            serviceId: AUTH-SERVICE
 #            sensitiveHeaders: Cookie,Set-Cookie
 
-    filme-service:
-            path: /filme-sevice/**
-            serviceId: FILME-SERVICE
-            sensitiveHeaders: Cookie,Set-Cookie
-    cinema-service:
+        filme-service:
+                path: /filme-sevice/**
+                serviceId: FILME-SERVICE
+                sensitiveHeaders: Cookie,Set-Cookie
+        cinema-service:
                 path: /cinema-sevice/**
                 serviceId: CINEMA-SERVICE
                 sensitiveHeaders: Cookie,Set-Cookie

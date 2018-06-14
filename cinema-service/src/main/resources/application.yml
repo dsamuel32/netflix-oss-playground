@@ -4,6 +4,9 @@ server:
 spring:
     application:
            name: cinema-service
+    profiles:
+           active: dev
+
 
 # Discovery Server Access
 eureka:
@@ -12,3 +15,8 @@ eureka:
                   defaultZone: http://localhost:8083/eureka/
 instance:
     leaseRenewalIntervalInSeconds: 5   # DO NOT DO THIS IN PRODUCTION
+
+
+feign:
+    hystrix:
+        enabled: true
