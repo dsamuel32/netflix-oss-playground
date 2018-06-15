@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Set;
 
-@FeignClient(name = "api-gateway/filme-service", fallback = FilmeFallback.class)
-@RibbonClient(name = "api-gateway/filme-service")
+@FeignClient(name = "api-gateway", fallback = FilmeFallback.class)
+@RibbonClient(name = "filme-service")
 public interface FilmeServiceProxy {
 
-    @GetMapping("/filme-service/filme")
+    @GetMapping("/api-gateway/filme-service/filme")
     Set<String> getFilmes();
 
 }

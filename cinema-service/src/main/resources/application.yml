@@ -4,9 +4,6 @@ server:
 spring:
     application:
            name: cinema-service
-    profiles:
-           active: dev
-
 
 # Discovery Server Access
 eureka:

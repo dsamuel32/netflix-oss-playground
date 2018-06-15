@@ -12,26 +12,17 @@ eureka:
     client:
         serviceUrl:
             defaultZone: http://localhost:8083/eureka/
-instance:
-    leaseRenewalIntervalInSeconds: 5   # DO NOT DO THIS IN PRODUCTION
 
 # Api-Gate-Way
 zuul:
     prefix: /api-gateway
     routes:
-#        auth-service:
-#            path: /auth-service/**
-#            serviceId: AUTH-SERVICE
-#            sensitiveHeaders: Cookie,Set-Cookie
-
         filme-service:
                 path: /filme-sevice/**
-                serviceId: FILME-SERVICE
-                sensitiveHeaders: Cookie,Set-Cookie
+                serviceId: filme-sevice
         cinema-service:
                 path: /cinema-sevice/**
-                serviceId: CINEMA-SERVICE
-                sensitiveHeaders: Cookie,Set-Cookie
+                serviceId: cinema-sevice
 
 
 # Increase the Hystrix timeout to 60s (globally)
