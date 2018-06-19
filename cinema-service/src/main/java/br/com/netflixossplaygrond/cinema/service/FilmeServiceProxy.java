@@ -10,7 +10,7 @@ import java.util.Set;
 @RibbonClient(name = "filme-service")
 public interface FilmeServiceProxy {
 
-    @GetMapping("/api-gateway/filme-service/filme")
+    @GetMapping("/filme-service/filme")
     Set<String> getFilmes();
 
 }

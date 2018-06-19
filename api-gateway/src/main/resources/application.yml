@@ -14,15 +14,15 @@ eureka:
             defaultZone: http://localhost:8083/eureka/
 
 # Api-Gate-Way
-zuul:
-    prefix: /api-gateway
-    routes:
-        filme-service:
-                path: /filme-sevice/**
-                serviceId: filme-sevice
-        cinema-service:
-                path: /cinema-sevice/**
-                serviceId: cinema-sevice
+#zuul:
+#    prefix: /api-gateway
+#    routes:
+#        filme-service:
+#                path: /filme-sevice/**
+#                serviceId: filme-sevice
+#        cinema-service:
+#                path: /cinema-sevice/**
+#                serviceId: cinema-sevice
 
 
 # Increase the Hystrix timeout to 60s (globally)
