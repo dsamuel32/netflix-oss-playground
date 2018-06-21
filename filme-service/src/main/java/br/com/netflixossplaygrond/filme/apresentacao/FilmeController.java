@@ -1,26 +1,48 @@
 package br.com.netflixossplaygrond.filme.apresentacao;
 
+import br.com.netflixossplaygrond.filme.dominio.dto.FilmeDTO;
+import br.com.netflixossplaygrond.filme.service.FilmeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @RestController
 @RequestMapping(value = "filme", produces = MediaType.APPLICATION_JSON_VALUE)
 public class FilmeController {
 
-    @GetMapping()
-    public ResponseEntity<Set<String>> getMovie() {
-        Set<String> movies = new HashSet<>();
-        movies.add("Vingadores Guerra Infinita");
-        movies.add("Spider-man");
-        movies.add("Home de ferro");
-        return new ResponseEntity<>(movies, HttpStatus.OK);
+    @Autowired
+    private FilmeService filmeService;
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<FilmeDTO> getFilmes() {
+        return filmeService.findAll();
+    }
+
+    @GetMapping(value = "{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public FilmeDTO getFilmesPorId(@PathVariable(value = "id", required = true) Long id) {
+        return filmeService.findOne(id);
+    }
+
+    @GetMapping(params = "ids")
+    @ResponseStatus(HttpStatus.OK)
+    public List<FilmeDTO> getFilmesPorIds(@RequestParam("ids") String params) {
+        if (params != null) {
+            List<Long> ids = new ArrayList<>();
+            String [] parametros = params.split(";");
+
+            for (String param : parametros) {
+                ids.add(Long.valueOf(param));
+            }
+
+            return filmeService.getFilmesByIds(ids);
+        }
+        return Collections.emptyList();
     }
 
 }
