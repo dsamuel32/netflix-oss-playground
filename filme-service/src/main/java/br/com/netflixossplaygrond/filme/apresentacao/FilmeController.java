@@ -45,4 +45,22 @@ public class FilmeController {
         return Collections.emptyList();
     }
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.OK)
+    public FilmeDTO salvar(FilmeDTO filmeDTO) {
+        return filmeService.salvar(filmeDTO);
+    }
+
+    @PutMapping(value = "{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public FilmeDTO alterar(FilmeDTO filmeDTO) {
+        return filmeService.alterar(filmeDTO);
+    }
+
+    @DeleteMapping(value = "{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void apagar(@PathVariable(value = "id", required = true) Long id) {
+        filmeService.apagar(id);
+    }
+
 }

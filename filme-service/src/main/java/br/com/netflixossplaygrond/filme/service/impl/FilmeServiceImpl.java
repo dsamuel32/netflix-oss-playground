@@ -43,6 +43,21 @@ public class FilmeServiceImpl implements FilmeService {
         return converterFilmesToFilmeDTO(filmes);
     }
 
+    @Override
+    public FilmeDTO salvar(FilmeDTO filmeDTO) {
+        return null;
+    }
+
+    @Override
+    public FilmeDTO alterar(FilmeDTO filmeDTO) {
+        return null;
+    }
+
+    @Override
+    public FilmeDTO apagar(Long id) {
+        return null;
+    }
+
     private List<FilmeDTO> converterFilmesToFilmeDTO(List<Filme> filmes) {
         if (!filmes.isEmpty()) {
             List<FilmeDTO> filmesDTOs = new ArrayList<>();

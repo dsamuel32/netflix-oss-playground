@@ -13,4 +13,12 @@ public interface FilmeService {
 
     List<FilmeDTO> getFilmesByIds(@Param("ids") List<Long> ids);
 
+    FilmeDTO salvar(FilmeDTO filmeDTO);
+
+    FilmeDTO alterar(FilmeDTO filmeDTO);
+
+    FilmeDTO apagar(Long id);
+
+
+
 }
