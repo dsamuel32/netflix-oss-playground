@@ -43,7 +43,7 @@ public class FilmeController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     public FilmeDTO salvar(@RequestBody FilmeDTO filmeDTO) {
         return filmeService.salvar(filmeDTO);
     }
@@ -54,8 +54,11 @@ public class FilmeController {
     }
 
     @DeleteMapping(value = "{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void apagar(@PathVariable(value = "id", required = true) Long id) {
         filmeService.apagar(id);
     }
 
 }
+
+//http://www.springboottutorial.com/spring-boot-exception-handling-for-rest-services
