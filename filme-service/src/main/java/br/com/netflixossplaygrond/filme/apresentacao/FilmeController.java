@@ -18,19 +18,16 @@ public class FilmeController {
     private FilmeService filmeService;
 
     @GetMapping
-    @ResponseStatus(HttpStatus.OK)
     public List<FilmeDTO> getFilmes() {
         return filmeService.findAll();
     }
 
     @GetMapping(value = "{id}")
-    @ResponseStatus(HttpStatus.OK)
     public FilmeDTO getFilmesPorId(@PathVariable(value = "id", required = true) Long id) {
         return filmeService.findOne(id);
     }
 
     @GetMapping(params = "ids")
-    @ResponseStatus(HttpStatus.OK)
     public List<FilmeDTO> getFilmesPorIds(@RequestParam("ids") String params) {
         if (params != null) {
             List<Long> ids = new ArrayList<>();
@@ -47,18 +44,16 @@ public class FilmeController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
-    public FilmeDTO salvar(FilmeDTO filmeDTO) {
+    public FilmeDTO salvar(@RequestBody FilmeDTO filmeDTO) {
         return filmeService.salvar(filmeDTO);
     }
 
     @PutMapping(value = "{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public FilmeDTO alterar(FilmeDTO filmeDTO) {
+    public FilmeDTO alterar(@RequestBody FilmeDTO filmeDTO) {
         return filmeService.alterar(filmeDTO);
     }
 
     @DeleteMapping(value = "{id}")
-    @ResponseStatus(HttpStatus.OK)
     public void apagar(@PathVariable(value = "id", required = true) Long id) {
         filmeService.apagar(id);
     }

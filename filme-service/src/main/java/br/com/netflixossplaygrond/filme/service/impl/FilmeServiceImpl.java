@@ -1,17 +1,19 @@
 package br.com.netflixossplaygrond.filme.service.impl;
 
 import br.com.netflixossplaygrond.commonlib.util.ModelMapperConverter;
-import br.com.netflixossplaygrond.filme.dominio.entidade.Filme;
 import br.com.netflixossplaygrond.filme.dominio.dto.FilmeDTO;
+import br.com.netflixossplaygrond.filme.dominio.entidade.Filme;
+import br.com.netflixossplaygrond.filme.exceptions.FilmeNaoEncontradoException;
 import br.com.netflixossplaygrond.filme.repository.FilmeRepository;
 import br.com.netflixossplaygrond.filme.service.FilmeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class FilmeServiceImpl implements FilmeService {
@@ -19,16 +21,12 @@ public class FilmeServiceImpl implements FilmeService {
     @Autowired
     private FilmeRepository filmeRepository;
 
-
     @Override
     public FilmeDTO findOne(Long id) {
-        Optional<Filme> optional = filmeRepository.findById(id);
-
-        if (optional.isPresent()) {
-            return ModelMapperConverter.getInstance().converterStrict(optional.get(), FilmeDTO.class);
-        }
-
-        return new FilmeDTO();
+        Filme filme =
+                filmeRepository.findById(id)
+                               .orElseThrow(() -> new FilmeNaoEncontradoException("Filme", "id", id));
+        return ModelMapperConverter.getInstance().converterStrict(filme, FilmeDTO.class);
     }
 
     @Override
@@ -44,18 +42,24 @@ public class FilmeServiceImpl implements FilmeService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public FilmeDTO salvar(FilmeDTO filmeDTO) {
-        return null;
+        ModelMapperConverter modelMapperConverter = ModelMapperConverter.getInstance();
+        Filme filme = modelMapperConverter.converterStrict(filmeDTO, Filme.class);
+        filme = filmeRepository.save(filme);
+        return modelMapperConverter.converterStrict(filme, FilmeDTO.class);
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public FilmeDTO alterar(FilmeDTO filmeDTO) {
-        return null;
+        return salvar(filmeDTO);
     }
 
     @Override
-    public FilmeDTO apagar(Long id) {
-        return null;
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void apagar(Long id) {
+        filmeRepository.deleteById(id);
     }
 
     private List<FilmeDTO> converterFilmesToFilmeDTO(List<Filme> filmes) {

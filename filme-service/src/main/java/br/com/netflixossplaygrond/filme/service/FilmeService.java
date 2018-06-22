@@ -17,7 +17,7 @@ public interface FilmeService {
 
     FilmeDTO alterar(FilmeDTO filmeDTO);
 
-    FilmeDTO apagar(Long id);
+    void apagar(Long id);
 
 
 
