@@ -1,16 +1,16 @@
-package br.com.netflixossplaygrond.filme.exceptions;
+package br.com.netflixossplaygrond.commonlib.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
-public class FilmeNaoEncontradoException extends RuntimeException {
+public class SemResultadoException extends RuntimeException {
 
     private String resourceName;
     private String fieldName;
     private Object fieldValue;
 
-    public FilmeNaoEncontradoException(String resourceName, String fieldName, Object fieldValue) {
+    public SemResultadoException(String resourceName, String fieldName, Object fieldValue) {
         super(String.format("%s não encontrado %s : '%s'", resourceName, fieldName, fieldValue));
         this.resourceName = resourceName;
         this.fieldName = fieldName;
@@ -40,5 +40,4 @@ public class FilmeNaoEncontradoException extends RuntimeException {
     public void setFieldValue(Object fieldValue) {
         this.fieldValue = fieldValue;
     }
-
 }

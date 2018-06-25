@@ -1,9 +1,9 @@
 package br.com.netflixossplaygrond.filme.service.impl;
 
+import br.com.netflixossplaygrond.commonlib.exception.SemResultadoException;
 import br.com.netflixossplaygrond.commonlib.util.ModelMapperConverter;
 import br.com.netflixossplaygrond.filme.dominio.dto.FilmeDTO;
 import br.com.netflixossplaygrond.filme.dominio.entidade.Filme;
-import br.com.netflixossplaygrond.filme.exceptions.FilmeNaoEncontradoException;
 import br.com.netflixossplaygrond.filme.repository.FilmeRepository;
 import br.com.netflixossplaygrond.filme.service.FilmeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class FilmeServiceImpl implements FilmeService {
     public FilmeDTO findOne(Long id) {
         Filme filme =
                 filmeRepository.findById(id)
-                               .orElseThrow(() -> new FilmeNaoEncontradoException("Filme", "id", id));
+                               .orElseThrow(() -> new SemResultadoException("Filme", "id", id));
         return ModelMapperConverter.getInstance().converterStrict(filme, FilmeDTO.class);
     }
 
