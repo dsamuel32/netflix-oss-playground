@@ -1,17 +1,15 @@
-package br.com.netflixossplaygrond.cinema.domain;
+package br.com.netflixossplaygrond.cinema.dominio.dto;
 
-import java.util.Set;
+import java.io.Serializable;
+import java.util.List;
 
-public class Cinema {
+public class CinemaDTO implements Serializable {
 
     private Long id;
-    private String nome;
-    private Set<String> filmes;
 
-    public Cinema(Long id, String nome) {
-        this.id = id;
-        this.nome = nome;
-    }
+    private String nome;
+
+    private List<FilmeDTO> filmes;
 
     public Long getId() {
         return id;
@@ -29,13 +27,11 @@ public class Cinema {
         this.nome = nome;
     }
 
-    public Set<String> getFilmes() {
+    public List<FilmeDTO> getFilmes() {
         return filmes;
     }
 
-    public void setFilmes(Set<String> filmes) {
+    public void setFilmes(List<FilmeDTO> filmes) {
         this.filmes = filmes;
     }
-
 }
-

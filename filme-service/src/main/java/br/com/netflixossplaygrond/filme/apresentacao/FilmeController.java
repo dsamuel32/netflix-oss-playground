@@ -1,5 +1,6 @@
 package br.com.netflixossplaygrond.filme.apresentacao;
 
+import br.com.netflixossplaygrond.commonlib.dominio.DetalheErro;
 import br.com.netflixossplaygrond.filme.dominio.dto.FilmeDTO;
 import br.com.netflixossplaygrond.filme.service.FilmeService;
 import io.swagger.annotations.Api;
@@ -34,7 +35,7 @@ public class FilmeController {
             response = FilmeDTO.class
     )
     @ApiResponses( {
-            @ApiResponse( code = 400, message = "Paramentro invalido" ),
+            @ApiResponse( code = 400, message = "Paramentro invalido", response = DetalheErro.class),
     } )
     public FilmeDTO getFilmesPorId(@PathVariable(value = "id", required = true) Long id) {
         return filmeService.findOne(id);
