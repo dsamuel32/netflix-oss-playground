@@ -9,6 +9,8 @@ public class CinemaDTO implements Serializable {
 
     private String nome;
 
+    private String cidade;
+
     private List<FilmeDTO> filmes;
 
     public Long getId() {
@@ -25,6 +27,14 @@ public class CinemaDTO implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     public List<FilmeDTO> getFilmes() {

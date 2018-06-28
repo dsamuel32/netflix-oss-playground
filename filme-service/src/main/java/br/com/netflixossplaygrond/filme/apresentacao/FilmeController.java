@@ -24,6 +24,15 @@ public class FilmeController {
     private FilmeService filmeService;
 
     @GetMapping
+    @ApiOperation(
+            value = "Recupera todos os filmes",
+            notes = "Recupera todos os filmes",
+            response = FilmeDTO.class
+    )
+    @ApiResponses( {
+            @ApiResponse( code = 500, message = "Erro inexperado", response = DetalheErro.class)
+    } )
+    @ResponseStatus(HttpStatus.OK)
     public List<FilmeDTO> getFilmes() {
         return filmeService.findAll();
     }
@@ -36,7 +45,9 @@ public class FilmeController {
     )
     @ApiResponses( {
             @ApiResponse( code = 400, message = "Paramentro invalido", response = DetalheErro.class),
+            @ApiResponse( code = 500, message = "Erro inexperado", response = DetalheErro.class)
     } )
+    @ResponseStatus(HttpStatus.OK)
     public FilmeDTO getFilmesPorId(@PathVariable(value = "id", required = true) Long id) {
         return filmeService.findOne(id);
     }
@@ -47,6 +58,7 @@ public class FilmeController {
             notes = "Recupera uma lista de filmes de acordo com os ids informados",
             response = List.class
     )
+    @ResponseStatus(HttpStatus.OK)
     public List<FilmeDTO> getFilmesPorIds(@RequestParam("ids") String params) {
         if (params != null) {
             List<Long> ids = new ArrayList<>();

@@ -8,4 +8,12 @@ public interface CinemaService {
 
     List<CinemaDTO> getCinemas();
 
+    CinemaDTO findOne(Long id);
+
+    CinemaDTO salvar(CinemaDTO cinemaDTO);
+
+    CinemaDTO alterar(CinemaDTO cinemaDTO);
+
+    void apagar(Long id);
+
 }
