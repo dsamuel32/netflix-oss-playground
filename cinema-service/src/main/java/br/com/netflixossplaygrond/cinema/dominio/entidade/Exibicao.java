@@ -1,7 +1,5 @@
 package br.com.netflixossplaygrond.cinema.dominio.entidade;
 
-import org.springframework.cglib.core.Local;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;

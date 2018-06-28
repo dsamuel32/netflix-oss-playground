@@ -1,0 +1,79 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="1" author="diego">
+        <createTable tableName="tb_cinema" schemaName="cinema">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="nome" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="cidade" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="diego">
+        <createTable tableName="tb_exibicao" schemaName="cinema">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="co_cinema" type="bigint">
+                <constraints nullable="true"/>
+            </column>
+            <column name="co_filme" type="bigint">
+                <constraints nullable="true"/>
+            </column>
+            <column name="dt_inicio_exibicao" type="date">
+                <constraints nullable="true"/>
+            </column>
+            <column name="dt_fim_exibicao" type="date">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="co_cinema"
+                                 baseTableName="tb_exibicao"
+                                 constraintName="fk_exibicao_cinema"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tb_cinema"/>
+
+    </changeSet>
+
+
+
+    <!--<changeSet id="5" author="diego">
+        <createTable tableName="tb_filme" schemaName="filme">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="nome" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="sinopse" type="longtext">
+                <constraints nullable="true"/>
+            </column>
+            <column name="dt_lancamento" type="date">
+                <constraints nullable="true"/>
+            </column>
+            <column name="url_baner" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="co_genero" type="bigint">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="co_genero"
+                                 baseTableName="tb_filme"
+                                 constraintName="fk_filme_genero"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tb_genero"/>
+    </changeSet>-->
+
+</databaseChangeLog>

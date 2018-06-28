@@ -14,4 +14,9 @@ public class FilmeFallback implements FilmeServiceProxy {
         return Collections.emptyList();
     }
 
+    @Override
+    public List<FilmeDTO> getFilmesPorIds(String params) {
+        return Collections.emptyList();
+    }
+
 }
