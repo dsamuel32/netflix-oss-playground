@@ -1,4 +1,4 @@
-package br.com.netflixossplaygrond.cinema.service;
+package br.com.netflixossplaygrond.cinema.service.integracao;
 
 import br.com.netflixossplaygrond.cinema.dominio.dto.FilmeDTO;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
@@ -12,8 +12,6 @@ import java.util.List;
 @RibbonClient(name = "filme-service")
 public interface FilmeServiceProxy {
 
-    @GetMapping("/filme-service/filme")
-    List<FilmeDTO> getFilmes();
 
     @GetMapping("/filme-service/filme")
     List<FilmeDTO> getFilmesPorIds(@RequestParam("ids") String params);
